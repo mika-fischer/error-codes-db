@@ -50,21 +50,21 @@ const marked = (s: string): string => {
 
 <template>
   <div v-if="ntstatus && ntstatus.length > 0">
-    <input v-model="query" placeholder="edit me" />
+    <input v-model="query" placeholder="search for error codes" />
     <p v-if="query.length === 0">Loaded {{ ntstatus.length }} records</p>
     <p v-else>Matched {{ n_filtered }} of {{ ntstatus.length }} records</p>
     <table v-if="filtered && filtered.length > 0">
       <thead>
         <td>name</td>
-        <td>u32 hex</td>
-        <td>u32 dec</td>
-        <td>i32 dec</td>
+        <td>code</td>
       </thead>
       <tr v-for="(item, i) in filtered" :key="i">
         <td v-html="marked(item.n)"></td>
-        <td v-html="marked(item.h)"></td>
-        <td v-html="marked(item.u)"></td>
-        <td v-html="marked(item.i)"></td>
+        <td>
+          <div v-html="marked(item.h)"></div>
+          <div v-html="marked(item.u)"></div>
+          <div v-html="marked(item.i)"></div>
+        </td>
       </tr>
     </table>
   </div>
