@@ -1,5 +1,5 @@
 {
-  "name": "system-errors",
+  "name": "error-codes-db",
   "version": "0.0.0",
   "scripts": {
     "dev": "vite",
