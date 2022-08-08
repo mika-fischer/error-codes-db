@@ -55,18 +55,38 @@ const marked = (s: string): string => {
     <p v-else>Matched {{ n_filtered }} of {{ ntstatus.length }} records</p>
     <table v-if="filtered && filtered.length > 0">
       <thead>
-        <td>name</td>
-        <td>code</td>
+        <td class="error-name-header">name</td>
+        <td class="error-code-header">code</td>
       </thead>
       <tr v-for="(item, i) in filtered" :key="i">
-        <td v-html="marked(item.n)"></td>
-        <td>
-          <div v-html="marked(item.h)"></div>
-          <div v-html="marked(item.u)"></div>
-          <div v-html="marked(item.i)"></div>
+        <td class="error-name" v-html="marked(item.n)"></td>
+        <td class="error-code">
+          <div class="error-code-hex" v-html="marked(item.h)"></div>
+          <div class="error-code-u32" v-html="marked(item.u)"></div>
+          <div class="error-code-i32" v-html="marked(item.i)"></div>
         </td>
       </tr>
     </table>
   </div>
   <div v-else>Loading data...</div>
 </template>
+
+<style scoped>
+.error-name-header {
+  text-align: left;
+}
+
+.error-code-header {
+  text-align: right;
+}
+
+.error-name {
+  text-align: left;
+  font-family: monospace;
+}
+
+.error-code {
+  text-align: right;
+  font-family: monospace;
+}
+</style>
